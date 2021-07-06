@@ -1,0 +1,16 @@
+show databases
+use fenda_biquini
+
+db.createCollection("teste", {capped: true, max: 2, size: 2})
+
+show collections;
+
+db.test.insertOne({"name": "Teste 1"});
+db.test.insertOne({"name": "Teste 2"});
+db.test.insertOne({"name": "Teste 3"});
+
+db.test.find({});
+
+db.teste.insertOne({"age": "10"});
+db.teste.find({});
+
