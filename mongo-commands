@@ -53,3 +53,15 @@ db.clients.deleteOne({"age": 55})
 db.clients.update({"Name" : "Bob Esponja"}, {$set: {"age": 55}});
 
 db.clients.deleteMany({"age": 55});
+
+for(var i=0; i<10000; i++){
+    db.clients.insert({"name": "Cliente" + i, "age": i});
+    }
+
+db.clients.find({}).count({});
+
+db.getCollection('clients').find({})
+
+db.getCollection('clients').find({name: "Cliente0"}).explain(true)
+
+db.getCollection('clients').createIndex({name: 1}, {"name": "idx_name"})
