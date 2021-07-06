@@ -14,3 +14,42 @@ db.test.find({});
 db.teste.insertOne({"age": "10"});
 db.teste.find({});
 
+db.clients.insert([{"name": "Patrick", "age": 38}, {"Name": "Bob Esponja"}]);
+db.clients.find({});
+
+db.clients.save({ "_id" : ObjectId("60e46dafe4f70d2669f0f214"), "name" : "Patrick", "age" : 40 });
+db.clients.find({});
+
+# save atualiza o documento inteiro
+db.clients.save({ "name" : "Lula Molusco", "age" : 40 });
+db.clients.find({});
+
+db.clients.update({"Name" : "Bob Esponja"}, {$set: {"age": 41}});
+db.clients.find({});
+
+db.clients.update({"age" : 40}, {$set: {"age": 43}}, {multi: true});
+db.clients.find({});
+
+db.clients.updateMany({"age": 43}, {$set: {"age": 55}});
+db.clients.find({});
+
+db.clients.find({});
+db.clients.find({"age": 55});
+
+db.clients.find({"age": 55, "name": "Lula Molusco"});
+
+db.clients.insert({"name": "Patrick2", "age": 38});
+db.clients.find({});
+
+db.clients.find({"age": {$in: [38, 41]}})
+
+db.clients.find({$or: [{"name": "Lula Molusco"}, {"age": 41}]});
+
+db.clients.find({"age": {$lt: 55}});
+db.clients.find({"age": {$lte: 41}});
+
+db.clients.deleteOne({"age": 55})
+
+db.clients.update({"Name" : "Bob Esponja"}, {$set: {"age": 55}});
+
+db.clients.deleteMany({"age": 55});
